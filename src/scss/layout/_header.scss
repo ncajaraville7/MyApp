@@ -1,0 +1,50 @@
+// NAVIGATION BAR
+
+.navbar {
+    padding: 2rem;
+    box-shadow: 0px 0px 5px 0px $black;
+
+    &-light &-toggler {
+        border: none;
+    }
+
+    &-toggler:focus {
+        text-decoration: none;
+        outline: 0;
+        box-shadow: 0 0 0 0;
+    }
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: $black;
+}
+
+.logo__image img {
+    height: 5rem;
+}
+
+.logo__text p {
+    font-size: 2.5rem;
+    font-family: $logoFont;
+    font-weight: bold;
+    color: $mainColor;
+    margin-left: 1rem;
+}
+
+.nav-item {
+    margin-right: 3.5rem;
+}
+
+@media (max-width: 991px) {
+    .mt-sm-10 li {
+        margin: 3.5rem auto;
+    }
+}
+
+.offcanvas-end {
+    width: 65%;
+}
+
