@@ -31,6 +31,39 @@ a {
     text-decoration: none;
 }
 
-body {
-    height: 10000px;
+.btn {
+    background: #fff; 
+    border: 2px solid $mainColor; 
+    padding: 16px 20px;
+    border-radius: 3px;
+    font-size: 1.8rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+
+    &:hover {
+        color: $white;
+    }
+
+    &::after{
+        content: "";
+        background: $mainColor;
+        position: absolute;
+        z-index: -1;
+        padding: 16px 20px;
+        display: block;
+        left: -20%;
+        right: -20%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.3s ease;
+    }
+
+    &:hover::after {
+        transition: all 0.3s ease-out;
+        transform: skewX(-45deg) scale(1, 1);
+    }
 }
+
