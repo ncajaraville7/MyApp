@@ -16,7 +16,8 @@ h1 {
   font-size: 4rem; }
 
 h2 {
-  font-size: 2rem; }
+  font-size: 3rem;
+  font-weight: 700; }
 
 h3 {
   font-size: 1.5rem; }
@@ -25,6 +26,13 @@ a {
   font-size: 1.8rem;
   color: #000;
   text-decoration: none; }
+
+p {
+  font-size: 2rem;
+  margin: 0; }
+
+img {
+  max-width: 100%; }
 
 .btn {
   background: #fff;
@@ -94,8 +102,31 @@ a {
   width: 65%; }
 
 .presentation {
-  margin-top: 10rem; }
+  margin-top: 18rem; }
   .presentation__text h1 span {
     font-family: "Audiowide", cursive;
     font-weight: 900;
+    color: #004AAD; }
+
+.join article {
+  background-color: #004AAD; }
+
+.join__text h2,
+.join__text p {
+  color: #ffff; }
+
+.join__text a {
+  color: #ffff;
+  text-decoration: underline;
+  font-weight: bold; }
+
+.wave-close {
+  transform: rotate(180deg); }
+
+.transfer__text {
+  width: 50%; }
+  @media (max-width: 991px) {
+    .transfer__text {
+      width: 100%; } }
+  .transfer__text h2 {
     color: #004AAD; }

@@ -54,7 +54,7 @@
 // PRESENTATION
 
 .presentation {
-    margin-top: 10rem;
+    margin-top: 18rem;
 
     &__text h1 span {
         font-family: $logoFont;
@@ -62,3 +62,51 @@
         color: $mainColor;
     }
 }
+
+// JOIN
+
+.join {
+    
+    & article {
+        background-color: $mainColor;
+    }
+    
+    &__text {
+
+
+        & h2,
+        & p {
+            color: $white;
+        }
+
+        & a {
+            color: $white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
+}
+
+.wave-close {
+    transform: rotate(180deg);
+}
+
+// TRANSFER
+
+.transfer {
+
+    &__text {
+        width: 50%;
+
+        @media (max-width: 991px) {
+            & {
+                width: 100%;
+            }
+        }
+
+        & h2 {
+            color: $mainColor
+        }
+    }
+}
+
