@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MyAPP.</title>
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="src/images/logo.png" type="image/x-icon">
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -27,7 +30,6 @@
                     </div>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <!-- <span class="navbar-toggler-icon"></span> -->
                     <div class="bar"></div>
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -41,19 +43,19 @@
                     <div class="offcanvas-body justify-content-lg-end align-items-lg-center">
                         <ul class="navbar-nav mb-2 mb-lg-0 mt-sm-10">
                             <li class="nav-item my-auto">
-                                <a class="active" aria-current="page" href="#">Inicio</a>
+                                <a href="index.html">Inicio</a>
                             </li>
                             <li class="nav-item my-auto">
-                                <a href="#">Transferencias</a>
+                                <a href="#transfer">Transferencias</a>
                             </li>
                             <li class="nav-item my-auto">
-                                <a href="#">Créditos</a>
+                                <a href="#loan">Préstamos</a>
                             </li>
                             <li class="nav-item my-auto">
-                                <a href="#">Contacto</a>
+                                <a href="#questions">FAQ</a>
                             </li>
                             <li>
-                                <a href="#" class="btn">Iniciar Sesión</a>
+                                <a href="src/pages/login.html" class="btn">Iniciar Sesión</a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +70,7 @@
             <article class="container d-flex d-md-flex flex-column flex-md-row">
                 <div class="presentation__text d-flex align-items-center flex-column m-auto">
                     <h1 class="text-center"><span>MyAPP</span> diseñada para potenciar tu día a día.</h1>
-                    <a href="#" class="btn mt-2">Hacete Cliente</a>
+                    <a href="src/pages/login.html" target="_blank" class="btn mt-2">Hacete Cliente</a>
                 </div>
                 <div class="presentation__image">
                     <img src="src/images/pixlr-bg-result (1).png" alt="Mockup">
@@ -81,13 +83,13 @@
             <article>
                 <div class="join__text container">
                     <h2>¿Cómo sumarte a MyAPP?</h2>
-                    <p class="mt-4">Primero debes registrarte en MyAPP. En caso de que ya dispongas de una cuenta inicia sesión <a href="#">aquí</a>. Una vez te encuentres registrado podrás depositar dinero en tu cuenta, realizar transferencias, consultar por prestamos y disfrutar de todos los beneficios que MyAPP tiene para vos.</p>
+                    <p class="mt-4">Primero debes registrarte en MyAPP. En caso de que ya dispongas de una cuenta inicia sesión <a href="src/pages/login.html" target="_blank">aquí</a>. Una vez te encuentres registrado podrás depositar dinero en tu cuenta, realizar transferencias, consultar por prestamos y disfrutar de todos los beneficios que MyAPP tiene para vos.</p>
                 </div>
             </article>
             <img src="src/images/wave.svg" alt="Wave" class="wave-close">
         </section>
 
-        <section class="transfer">
+        <section class="transfer" id="transfer">
             <article class="container d-flex flex-column text-center flex-lg-row align-items-lg-center gap-5">
                 <div class="transfer__text">
                     <h2>Transferí y recibí plata de tod@s</h2>
@@ -98,7 +100,111 @@
                 </div>
             </article>
         </section>
+
+        <section class="loan mt-4" id="loan">
+            <article class="container d-flex flex-column text-center flex-lg-row align-items-lg-center gap-5">
+                <div class="loan__image">
+                    <img src="src/images/credits.gif" alt="loan">
+                </div>
+                <div class="loan__text">
+                    <h2>Préstamos</h2>
+                    <p>Simulá tu préstamo de hasta $500.000 desde la app, hacé la solicitud y recibí la plata en tu cuenta.</p>
+                </div>
+            </article>
+        </section>
+        
+        <section class="questions" id="questions">
+            <h2 class="text-center">Preguntas Frecuentes</h2>
+            <article class="container mt-5">
+                <div class="accordion" id="accordionExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                ¿Cuál es el límite diario de extracción en cajeros automáticos?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>El límite de extracción por cajeros Link y Banelco es de hasta $8.500 cada 24hs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                ¿Las extracciones en efectivo tienen algún costo?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>En Rapipago podés hacer una extracción gratis por mes. A partir de la segunda tiene un costo de $75 + IVA.
+                                En cajeros automáticos Link y Banelco, las extracciones tienen un costo de $105 + IVA. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                ¿Se pueden hacer transferencias a través de CVU en otra moneda?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>No, solo podés transferir en pesos argentinos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                ¿Cómo hago una transferencia a través de MyApp?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>Si la persona a la que querés transferir tiene MyApp ingresá a la app. Luego, ingresá a la sección 'Transferencias', elegí a quién querés enviarle plata y seleccioná “Enviar pago”.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    ¿Qué es una transferencia de MyAPP?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Una transferencia de MyAPP es una transferencia a otro usuario a través de la app. Estas son inmediatas y gratuitas.</p>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSix">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        ¿Hay un monto mínimo de transferencia?
+                                    </button>
+                                </h2>
+                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p>¡No! Podés transferir lo que quieras.</p>
+                                    </div>
+                                </div>
+                    </div>
+                    
+                </div>
+            </article>
+        </section>
     </main>
+
+    <footer>
+        <p class="text-center">Desarrollado por Nicolás Cajaraville</p>
+    </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

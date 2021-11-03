@@ -1,0 +1,176 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $mainColor;
+    transition: 0.5s;
+}
+
+.content {
+    position: relative;
+    width: 80rem;
+    height: 50rem;
+    margin: 2rem;
+
+    @media (max-width: 991px) {
+        & {
+            max-width: 40rem;
+            height: 65rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.background {
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    height: 42rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+
+    & .box {
+        position: relative;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;      
+        flex-direction: column;
+
+        & h2 {
+            color: $white;
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        & button {
+            cursor: pointer;
+            padding: 1rem 2rem;
+            color: $black;
+            font-weight: 500;
+            border: none;
+        }
+    }
+}
+
+.formBx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: $white;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.25);
+    transition: .5s ease-in-out;
+    overflow: hidden;
+
+    @media (max-width: 991px) {
+        & {
+            width: 100%;
+            height: 50rem;
+            top: 0;
+        }
+    }
+
+    & .signupForm {
+        left: -100% !important;
+    }
+
+    &.active {
+        left: 50%;
+
+        @media (max-width: 991px) {
+            & {
+                left: 0;
+                top: 15rem;
+            }
+        }
+
+        & .signinForm {
+            left: -100% !important;
+            transition-delay: 0s;
+        }
+
+        & .signupForm {
+            left: 0 !important;
+        }
+    }
+
+    & .signinForm {
+        transition-delay: .25s;
+    }
+
+    & .form {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      padding: 5rem;
+      transition: 0.5s; 
+
+      & form {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          background-color: $white;
+
+          & h3 {
+              font-size: 1.5em;
+              margin-bottom: 2rem;
+              font-weight: 700;
+              color: $mainColor;
+          }
+
+          & a {
+              font-size: 1.5rem;
+              text-decoration: underline;
+          }
+
+          & input {
+              width: 100%;
+              margin-bottom: 2rem;
+              padding: 1rem;
+              outline: none;
+              font-size: 16px;
+              border: 1px solid $black;
+
+              &[type="submit"] {
+                  background-color: $mainColor;
+                  border: none;
+                  color: $white;
+                  max-width: 13rem;
+                  cursor: pointer;
+              }
+          }
+      }
+    }
+}
+
+@media (max-width: 991px) {
+    .content .background {
+        top: 0;
+        height: 100%;
+    }
+
+    .background .box {
+        position: absolute;
+        width: 100%;
+        height: 15rem;
+        bottom: 0;
+    }
+
+    .background .signin {
+        top: 0;
+    }
+}
