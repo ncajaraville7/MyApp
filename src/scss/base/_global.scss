@@ -43,7 +43,7 @@ img {
 
 .btn {
     background: #fff; 
-    border: 2px solid $mainColor; 
+    border: 3px solid $mainColor; 
     padding: 10px 20px;
     border-radius: 3px;
     font-size: 1.8rem;
@@ -74,6 +74,10 @@ img {
     &:hover::after {
         transition: all 0.3s ease-out;
         transform: skewX(-45deg) scale(1, 1);
+    }
+
+    &-width {
+        width: 18rem;
     }
 }
 

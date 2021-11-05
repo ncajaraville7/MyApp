@@ -135,41 +135,6 @@
     }
 }
 
-// CONTACT
-
-.contact h2 {
-    background-color: $mainColor;
-    margin: 0;
-    color: $white;
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: $mainColor;
-
-    & .input {
-        display: flex;
-        flex-direction: column;
-        width: 30rem;
-
-        & label {
-            color: $white;
-            font-size: 1.5rem;
-        }
-
-        & input {
-            height: 3rem;
-        }
-    }
-
-    & textarea {
-        width: 30rem;
-    }
-}
-
 // QUESTION
 
 .questions h2 {

@@ -36,7 +36,7 @@ img {
 
 .btn {
   background: #fff;
-  border: 2px solid #004AAD;
+  border: 3px solid #004AAD;
   padding: 10px 20px;
   border-radius: 3px;
   font-size: 1.8rem;
@@ -62,6 +62,8 @@ img {
   .btn:hover::after {
     transition: all 0.3s ease-out;
     transform: skewX(-45deg) scale(1, 1); }
+  .btn-width {
+    width: 18rem; }
 
 footer {
   position: relative;
@@ -170,29 +172,6 @@ footer {
       width: 100%; } }
   .loan__text h2 {
     color: #004AAD; }
-
-.contact h2 {
-  background-color: #004AAD;
-  margin: 0;
-  color: #ffff; }
-
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #004AAD; }
-  form .input {
-    display: flex;
-    flex-direction: column;
-    width: 30rem; }
-    form .input label {
-      color: #ffff;
-      font-size: 1.5rem; }
-    form .input input {
-      height: 3rem; }
-  form textarea {
-    width: 30rem; }
 
 .questions h2 {
   color: #004AAD; }
@@ -330,3 +309,59 @@ form {
     bottom: 0; }
   .background .signin {
     top: 0; } }
+
+.btn-options {
+  border: none;
+  background-color: transparent;
+  transition: .3s;
+  padding: 1rem; }
+  .btn-options i {
+    font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto; }
+
+.dropdown-toggle::after {
+  border-top: none; }
+
+.bg {
+  background-color: #f2f2f2; }
+
+.accounts {
+  box-shadow: 0px 0px 5px 0px #000;
+  padding: 5rem;
+  background-color: #ffff; }
+  .accounts h2 {
+    color: #004AAD; }
+  .accounts__ars, .accounts__dls {
+    box-shadow: 0px 0px 5px 0px #000;
+    padding: 2rem; }
+
+.buy {
+  box-shadow: 0px 0px 5px 0px #000;
+  width: 40%;
+  padding: 5rem;
+  background-color: #ffff; }
+  @media (max-width: 991px) {
+    .buy {
+      width: 100%; } }
+  .buy h2 {
+    font-size: 2.5rem;
+    color: #004AAD; }
+
+.loan-app {
+  box-shadow: 0px 0px 5px 0px #000;
+  width: 60%;
+  padding: 5rem;
+  background-color: #ffff; }
+  @media (max-width: 991px) {
+    .loan-app {
+      width: 100%;
+      margin: 0 !important; } }
+  .loan-app h2 {
+    color: #004AAD; }
+  .loan-app__form input {
+    height: 3rem;
+    width: 30rem;
+    font-size: 1.5rem;
+    padding: 1.5rem; }

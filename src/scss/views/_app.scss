@@ -1,0 +1,88 @@
+// NAV APP
+
+.btn-options {
+    border: none;
+    background-color: transparent;
+    transition: .3s;
+    padding: 1rem;
+
+    & i {
+        font-size: 2rem;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+}
+
+.dropdown-toggle::after {
+    border-top: none;
+}
+
+// ACCOUNTS
+
+.bg {
+    background-color: #f2f2f2;
+}
+
+.accounts {
+    box-shadow: 0px 0px 5px 0px $black;
+    padding: 5rem;
+    background-color: $white;
+
+    & h2 {
+        color: $mainColor;
+    }
+
+    &__ars,
+    &__dls {
+        box-shadow: 0px 0px 5px 0px #000;
+        padding: 2rem;
+    }
+}
+
+// BUY
+
+.buy {
+    box-shadow: 0px 0px 5px 0px $black;
+    width: 40%;
+    padding: 5rem;
+    background-color: $white;
+
+    @media (max-width: 991px) {
+        & {
+            width: 100%;
+        }
+    }
+
+    & h2 {
+        font-size: 2.5rem;
+        color: $mainColor;
+    }
+}
+
+// LOAN
+
+.loan-app {
+    box-shadow: 0px 0px 5px 0px $black;
+    width: 60%;
+    padding: 5rem;
+    background-color: $white;
+
+    @media (max-width: 991px) {
+        & {
+            width: 100%;
+            margin: 0 !important;
+        }
+    } 
+
+    & h2 {
+        color: $mainColor;
+    }
+
+    &__form input {
+        height: 3rem;
+        width: 30rem;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+    }
+}
