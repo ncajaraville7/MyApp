@@ -34,12 +34,20 @@ function cotizar() {
     while(consultaUsuario != 'ESC' && consultaUsuario != 'Esc' && consultaUsuario != 'esc') {
         switch(consultaUsuario) {
             case '1':
-                let cotizaPesos = parseInt(prompt('Escriba la cantidad de pesos que quiere pasar a dolares'));
-                alert(`U$D ${cotizaPesos / dolar}`);
+                let cotizaPesos = prompt('Escriba la cantidad de pesos que quiere pasar a dolares');
+                if(!cotizaPesos) {
+                    alert('No ingreso ningún dato');
+                } else {
+                    alert(`U$D ${parseInt(cotizaPesos) / dolar}`);
+                }
                 break;
             case '2':
                 let cotizaDolar = parseInt(prompt('Escriba la cantidad de dolares que quiere pasar a pesos'));
-                alert(`$ ${cotizaDolar * dolar}`);
+                if(!cotizaDolar) {
+                    alert('No ingreso ningún dato');
+                } else {
+                    alert(`U$D ${parseInt(cotizaDolar) * dolar}`);
+                }
                 break;
             default:
                 alert('Opción incorrecta');
