@@ -1,10 +1,11 @@
 function seleccionarTarea() {
     let consultaUsuario = prompt('Seleccione una tarea a realizar \n 1 -Depositar dinero a mi cuenta \n 2 -Realizar una transferencia \n 3-Realizar una cotización \n "ESC" - PARA FINALIZAR');
+    let deposito = 0;
 
     while(consultaUsuario != 'ESC' && consultaUsuario != 'Esc' && consultaUsuario != 'esc') {
         switch(consultaUsuario) {
             case '1':
-                let deposito = parseInt(prompt('Escriba la cantidad que desea depositar.'));
+                deposito = parseInt(prompt('Escriba la cantidad que desea depositar.'));
                 alert(`Deposito realizado con éxito. \n Monto depositado: $${deposito}`);
                 break;
             case '2':
