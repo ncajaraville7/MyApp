@@ -37,7 +37,7 @@ function passUsuario() {
         contraseñaUsuario = prompt('Ingrese su contraseña');
     }
 
-    window.location.href = "http://127.0.0.1:5500/src/pages/app.html"
+    window.location.href = "https://ncajaraville7.github.io/MyApp/src/pages/app.html"
     return contraseñaUsuario;
 }
 
