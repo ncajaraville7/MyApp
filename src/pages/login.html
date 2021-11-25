@@ -35,11 +35,11 @@
 
             <div class="formBx">
                 <div class="form signinForm">
-                    <form action="">
+                    <form>
                         <h3>Iniciar Sesión</h3>
-                        <input type="text" name="name" placeholder="Ingerse su Usuario">
-                        <input type="password" name="password" id="" placeholder="Ingrese su Contraseña">
-                        <input type="submit" value="Iniciar Sesión">
+                        <input type="text" placeholder="Ingerse su Usuario" class="usuario" autocomplete="current-text">
+                        <input type="password" placeholder="Ingrese su Contraseña" class="contraseña" autocomplete="current-password">
+                        <input type="submit" value="Iniciar Sesión" class="login">
                         <a href="#" class="forgot">Recuperar Contraseña</a>
                     </form>
                 </div>
@@ -47,14 +47,18 @@
                 <div class="form signupForm">
                     <form action="">
                         <h3>Registrarse</h3>
-                        <input type="text" name="name" placeholder="Ingerse su Usuario">
-                        <input type="password" name="password" placeholder="Ingrese su Contraseña">
-                        <input type="password" name="password" placeholder="Confirme su Contraseña">
-                        <input type="submit" value="Registrate">
+                        <input type="text" placeholder="Ingerse su Usuario" class="regUsuario" autocomplete="current-text">
+                        <input type="password" placeholder="Ingrese su Contraseña" class="regContraseña" autocomplete="current-password">
+                        <input type="password" placeholder="Confirme su Contraseña" class="confContraseña" autocomplete="current-password">
+                        <input type="submit" value="Registrate" class="registrarse">
                     </form>
                 </div>
+
+                <div class="error"></div>
             </div>
         </div>
+
+        
 
         <div class="back">
             <a href="../../index.html">←</a>

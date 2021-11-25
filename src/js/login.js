@@ -1,45 +1,64 @@
+// VARIABLES
+
 const btnSignup = document.querySelector('.signup-btn');
 const btnSignin = document.querySelector('.signin-btn');
 const form = document.querySelector('.formBx');
 
-btnSignup.addEventListener('click', function() {
-    form.classList.add('active')
+const inputUsuario = document.querySelector('.usuario');
+const inputContraseña = document.querySelector('.contraseña');
+const inputIniciarSesion = document.querySelector('.login');
+
+const error = document.querySelector('.error');
+
+const irRegistrarse = document.querySelector('.signup-btn');
+
+const regUsuario = document.querySelector('.regUsuario');
+const regContraseña = document.querySelector('.regContraseña');
+const confContraseña = document.querySelector('.confContraseña');
+
+const irIniciarSesion = document.querySelector('.signin-btn');
+
+const registrarse = document.querySelector('.registrarse');
+
+// EVENTOS
+
+btnSignup.addEventListener('click', ()=> form.classList.add('active'));
+
+btnSignin.addEventListener('click', ()=> form.classList.remove('active'));
+
+inputUsuario.addEventListener('blur', validarRegistro);
+inputContraseña.addEventListener('blur', validarRegistro);
+
+inputIniciarSesion.addEventListener('click', e => {
+    e.preventDefault();
+
+    if(!inputUsuario.value || !inputContraseña.value) {
+        mostrarError('Usuario o contraseña invalidos');
+    } else {
+
+        window.location.href = "https://ncajaraville7.github.io/MyApp/src/pages/app.html"
+    }
+})
+
+irRegistrarse.addEventListener('click', () => error.innerHTML = '');
+
+regUsuario.addEventListener('blur', validarRegistro);
+regContraseña.addEventListener('blur', validarRegistro);
+confContraseña.addEventListener('blur', validarRegistro);
+
+irIniciarSesion.addEventListener('click', () => error.innerHTML = '');
+
+registrarse.addEventListener('click', () => {
+    dataUsuarios.push(new Usuario ({
+        usuario: regUsuario.value,
+        contraseña: regContraseña.value
+    }));
 });
 
-btnSignin.addEventListener('click', function() {
-    form.classList.remove('active')
-});
+//---------------------------
 
 
 const dataUsuarios = [];
-let nombreUsuario;
-
-function nameUsuario() {
-    nombreUsuario = prompt('Ingrese su nombre de usuario');
-
-    while(!nombreUsuario) {
-        alert('No ingresó ningún nombre de usuario.')
-        nombreUsuario = prompt('Ingrese su nombre de usuario');
-    }
-
-    return nombreUsuario
-}
-
-function saludo() {
-    alert(`Bienvenid@ ${nombreUsuario}`);
-}
-
-function passUsuario() {
-    let contraseñaUsuario = prompt('Ingrese su contraseña');
-
-    while(!contraseñaUsuario) {
-        alert('No ingresó ninguna contraseña.')
-        contraseñaUsuario = prompt('Ingrese su contraseña');
-    }
-
-    window.location.href = "https://ncajaraville7.github.io/MyApp/src/pages/app.html"
-    return contraseñaUsuario;
-}
 
 class Usuario {
     constructor(data) {
@@ -49,10 +68,32 @@ class Usuario {
     }
 }
 
-dataUsuarios.push(new Usuario ({
-    usuario: nameUsuario(),
-    contraseña: passUsuario(),
-    bienvenida: saludo()
-}));
 
-console.log(dataUsuarios);
+
+
+
+// FUNCIONES
+
+function validarRegistro(e) {
+    if(!e.target.value) {
+        e.target.classList.add('validacionEr');
+        e.target.classList.remove('validacionOk');
+        mostrarError('Debes completar todos los campos');
+    } else {
+        e.target.classList.add('validacionOk');
+        e.target.classList.remove('validacionEr');
+        error.innerHTML = '';
+    }
+}
+
+
+function mostrarError(mensaje) {
+    const alerta = document.createElement('p');
+    alerta.textContent = mensaje;
+    alerta.classList.add('alerta');
+    error.appendChild(alerta);
+}
+
+
+
+

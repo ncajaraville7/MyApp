@@ -174,3 +174,26 @@
         top: 0;
     }
 }
+
+.validacionOk {
+    border-color: $mainColor !important;
+}
+
+.validacionEr {
+    border-color: rgb(255, 0, 0) !important;
+}
+
+.alerta {
+    background-color: rgb(255, 0, 0);
+    padding: 2rem;
+    // z-index: 10000;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 85%;
+    color: $white;
+    font-size: 16px;
+    text-align: center;
+}
