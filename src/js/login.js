@@ -2,13 +2,13 @@
 
 const btnSignup = document.querySelector('.signup-btn');
 const btnSignin = document.querySelector('.signin-btn');
-const form = document.querySelector('.formBx');
+const boxFormulario = document.querySelector('.formBx');
 
 const inputUsuario = document.querySelector('.usuario');
 const inputContraseña = document.querySelector('.contraseña');
 const inputIniciarSesion = document.querySelector('.login');
 
-const error = document.querySelector('.error');
+const alertas = document.querySelector('.alertas');
 
 const irRegistrarse = document.querySelector('.signup-btn');
 
@@ -20,11 +20,25 @@ const irIniciarSesion = document.querySelector('.signin-btn');
 
 const registrarse = document.querySelector('.registrarse');
 
+const formulario = document.querySelector('.formulario')
+
+//---------------------------
+
+const dataUsuarios = [];
+
+class Usuario {
+    constructor(data) {
+        this.usuario = data.usuario;
+        this.contraseña = data.contraseña;
+    }
+}
+
+
 // EVENTOS
 
-btnSignup.addEventListener('click', ()=> form.classList.add('active'));
+btnSignup.addEventListener('click', ()=> boxFormulario.classList.add('active'));
 
-btnSignin.addEventListener('click', ()=> form.classList.remove('active'));
+btnSignin.addEventListener('click', ()=> boxFormulario.classList.remove('active'));
 
 inputUsuario.addEventListener('blur', validarRegistro);
 inputContraseña.addEventListener('blur', validarRegistro);
@@ -40,36 +54,29 @@ inputIniciarSesion.addEventListener('click', e => {
     }
 })
 
-irRegistrarse.addEventListener('click', () => error.innerHTML = '');
+irRegistrarse.addEventListener('click', () => alertas.innerHTML = '');
 
 regUsuario.addEventListener('blur', validarRegistro);
 regContraseña.addEventListener('blur', validarRegistro);
 confContraseña.addEventListener('blur', validarRegistro);
 
-irIniciarSesion.addEventListener('click', () => error.innerHTML = '');
+irIniciarSesion.addEventListener('click', () => alertas.innerHTML = '');
 
-registrarse.addEventListener('click', () => {
-    dataUsuarios.push(new Usuario ({
-        usuario: regUsuario.value,
-        contraseña: regContraseña.value
-    }));
-});
+registrarse.addEventListener('click', e => {
+    e.preventDefault();
+    if(regContraseña.value != confContraseña.value) {
+        mostrarError('Las contraseñas no coinciden');
+    } else {
+        mostrarConfirmacion('Usuario creado con exito');
+    
+        dataUsuarios.push(new Usuario ({
+            usuario: regUsuario.value,
+            contraseña: regContraseña.value
+        }));
 
-//---------------------------
-
-
-const dataUsuarios = [];
-
-class Usuario {
-    constructor(data) {
-        this.usuario = data.usuario;
-        this.contraseña = data.contraseña;
-        this.bienvenida = data.bienvenida
+        formulario.reset()
     }
-}
-
-
-
+});
 
 
 // FUNCIONES
@@ -82,17 +89,25 @@ function validarRegistro(e) {
     } else {
         e.target.classList.add('validacionOk');
         e.target.classList.remove('validacionEr');
-        error.innerHTML = '';
+        alertas.innerHTML = '';
     }
 }
 
 
 function mostrarError(mensaje) {
-    const alerta = document.createElement('p');
-    alerta.textContent = mensaje;
-    alerta.classList.add('alerta');
-    error.appendChild(alerta);
+    const alertaError = document.createElement('p');
+    alertaError.textContent = mensaje;
+    alertaError.classList.add('error');
+    alertas.appendChild(alertaError);
 }
+
+function mostrarConfirmacion(mensaje) {
+    const confirmacion = document.createElement('p');
+    confirmacion.textContent = mensaje;
+    confirmacion.classList.add('confirmacion');
+    alertas.appendChild(confirmacion);
+}
+
 
 
 

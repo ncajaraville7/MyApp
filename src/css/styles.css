@@ -316,8 +316,21 @@ img {
 .validacionEr {
   border-color: red !important; }
 
-.alerta {
+.error {
   background-color: red;
+  padding: 2rem;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 85%;
+  color: #ffff;
+  font-size: 16px;
+  text-align: center; }
+
+.confirmacion {
+  background-color: #0da705;
   padding: 2rem;
   position: absolute;
   bottom: 30px;
