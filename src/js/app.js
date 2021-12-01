@@ -70,228 +70,82 @@
 
 // VARIABLES
 
-
+const inputDepositar = document.getElementById('cantidadDepositar');
+const formularioDeposito = document.getElementById('formularioDeposito');
 const btnDepositar = document.getElementById('depositar');
+let deposito = 0;
+
+const inputTransferir = document.getElementById('cantidadTransferir');
+const formularioTransferir = document.getElementById('formularioTransferencia');
 const btnTransferir = document.getElementById('transferir');
-const btnComprarDolares = document.getElementById('comprarDolares');
-const btnVenderDolares = document.getElementById('venderDolares');
+let transferencia = 0;
 
-
-
-
-
-// console.log(btnTransferir)
-
-
+const cuentaPesos = document.getElementById('cuentaPesos');
 
 
 // EVENTOS
 
 btnDepositar.addEventListener('click', realizarDeposito);
 btnTransferir.addEventListener('click', realizarTransferencia);
-btnComprarDolares.addEventListener('click', comprarDolares);
-btnVenderDolares.addEventListener('click', venderDolares);
-
-
-
-
-
-
-
-
 
 // FUNCIONES
 
-function realizarDeposito() {
-    (async () => {
-      const { value: cuentas } = await Swal.fire({
-        title: 'Realizar Deposito',
-        text: '¿A que cuenta desea realizar un deposito?',
-        iconColor: '#004AAD',
-        backdrop: true,
-        customClass: {
-            confirmButton: 'btn p-2',
-        },
-        input: 'select',
-        inputOptions: {
-          'Cuentas': {
-            cuentaPesos: 'Cuenta Pesos',
-            cuentaDolares: 'Cuenta Dolares'
-          },
-        },
-        inputPlaceholder: 'Seleccione una cuenta',
-        buttonsStyling: false,
-        confirmButtonText: 'Confirmar',
-        showCloseButton: true
-      });
 
-      if(cuentas[0]) {
-        Swal.fire({
-          title: 'Realizar Deposito',
-          text: 'Ingrese la cantidad a depositar',
-          backdrop: true,
-          customClass: {
-            confirmButton: 'btn p-2',
-          },
-          input: 'number',
-          buttonsStyling: false,
-          confirmButtonText: 'Confirmar',
-          showCloseButton: true
-        })
-      } else if (cuentas[1]) {
-        Swal.fire({
-          title: 'Realizar Deposito',
-          text: 'Ingrese la cantidad a depositar',
-          backdrop: true,
-          customClass: {
-            confirmButton: 'btn p-2',
-          },
-          input: 'number',
-          buttonsStyling: false,
-          confirmButtonText: 'Confirmar',
-          showCloseButton: true
-        })
-      } else {
-        Swal.fire({
-          title: 'No seleccionó ninguna opción',
-          icon: 'error',
-          backdrop: true,
-          showCloseButton: true,
-          confirmButtonColor: '#004AAD'
-        })
-      }
-    })()
+function realizarDeposito() {
+  deposito = parseFloat(inputDepositar.value);
+
+  if(!deposito) {
+    Swal.fire({
+      title: 'No ingresó ningún valor',
+      icon: 'error',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+  } else {
+    Swal.fire({
+      title: 'Deposito realizado correctamente',
+      icon: 'success',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+    cuentaPesos.innerHTML = `${deposito}`;
+    formularioDeposito.reset();
+  }
 }
 
 function realizarTransferencia() {
-    (async () => {
-      const { value: transferencias } = await Swal.fire({
-        title: 'Realizar Transferencia',
-        iconColor: '#004AAD',
-        backdrop: true,
-        customClass: {
-            confirmButton: 'btn p-2',
-        },
-        inputLabel: 'Indique el monto a transferir',
-        input: 'number',
-        buttonsStyling: false,
-        confirmButtonText: 'Confirmar',
-        showCloseButton: true
-      });
-    })()
-}
+  transferencia = parseFloat(inputTransferir.value);
 
-function comprarDolares() {
-  (async () => {
-    const { value: monedaExtranjera } = await Swal.fire({
-      title: 'Compra moneda extranjera',
-      text: '¿Que moneda desea comprar?',
-      iconColor: '#004AAD',
+  if(!transferencia) {
+    Swal.fire({
+      title: 'No ingresó ningún valor',
+      icon: 'error',
       backdrop: true,
-      customClass: {
-          confirmButton: 'btn p-2',
-      },
-      input: 'select',
-      inputOptions: {
-        'Monedas': {
-          dolares: 'Dolares',
-          euros: 'Euros'
-        },
-      },
-      inputPlaceholder: 'Seleccione una moneda',
-      buttonsStyling: false,
-      confirmButtonText: 'Confirmar',
-      showCloseButton: true
-    });
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+  } else {
+    Swal.fire({
+      title: 'Transferencia realizada correctamente',
+      icon: 'success',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
 
-    if(monedaExtranjera[0]) {
+    if(deposito < transferencia) {
       Swal.fire({
-        title: 'Comprar dolares',
-        text: 'Ingrese la cantidad que desea comprar',
-        backdrop: true,
-        customClass: {
-          confirmButton: 'btn p-2',
-        },
-        input: 'number',
-        buttonsStyling: false,
-        confirmButtonText: 'Confirmar',
-        showCloseButton: true
-      })
-    } else if (monedaExtranjera[1]) {
-      Swal.fire({
-        title: '¡Error!',
-        text: 'No es posible realizar la operación en este momento, intente de nuevo más tarde',
+        title: 'No tienes esa cantidad de dinero para transferir',
         icon: 'error',
         backdrop: true,
         showCloseButton: true,
         confirmButtonColor: '#004AAD'
       })
     } else {
-      Swal.fire({
-        title: 'No seleccionó ninguna opción',
-        icon: 'error',
-        backdrop: true,
-        showCloseButton: true,
-        confirmButtonColor: '#004AAD'
-      })
+      cuentaPesos.innerHTML = `$` + (`${deposito}` - `${transferencia}`);
+      deposito = deposito - transferencia
     }
-  })()
+  }
 }
-
-function venderDolares() {
-  (async () => {
-    const { value: monedaExtranjera } = await Swal.fire({
-      title: 'Venta moneda extranjera',
-      text: '¿Que moneda desea vender?',
-      iconColor: '#004AAD',
-      backdrop: true,
-      customClass: {
-          confirmButton: 'btn p-2',
-      },
-      input: 'select',
-      inputOptions: {
-        'Monedas': {
-          dolares: 'Dolares',
-          euros: 'Euros'
-        },
-      },
-      inputPlaceholder: 'Seleccione una moneda',
-      buttonsStyling: false,
-      confirmButtonText: 'Confirmar',
-      showCloseButton: true
-    });
-
-    if(monedaExtranjera[0]) {
-      Swal.fire({
-        title: 'Comprar dolares',
-        text: 'Ingrese la cantidad que desea vender',
-        backdrop: true,
-        customClass: {
-          confirmButton: 'btn p-2',
-        },
-        input: 'number',
-        buttonsStyling: false,
-        confirmButtonText: 'Confirmar',
-        showCloseButton: true
-      })
-    } else if (monedaExtranjera[1]) {
-      Swal.fire({
-        title: '¡Error!',
-        text: 'No es posible realizar la operación en este momento, intente de nuevo más tarde',
-        icon: 'error',
-        backdrop: true,
-        showCloseButton: true,
-        confirmButtonColor: '#004AAD'
-      })
-    } else {
-      Swal.fire({
-        title: 'No seleccionó ninguna opción',
-        icon: 'error',
-        backdrop: true,
-        showCloseButton: true,
-        confirmButtonColor: '#004AAD'
-      })
-    }
-  })()
-}
-

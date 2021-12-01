@@ -49,7 +49,7 @@
             <article class="d-flex flex-column flex-lg-row justify-content-lg-around align-items-center mt-4">
                 <div class="accounts__ars d-flex align-items-center flex-column mt-4">
                     <h3>Cuenta ARS</h3>
-                    <p>$0</p>
+                    <p id="cuentaPesos">$0</p>
                 </div>
 
                 <div class="accounts__dls d-flex align-items-center flex-column mt-4">
@@ -59,9 +59,47 @@
             </article>
 
             <div class="accounts__btns d-flex flex-column flex-lg-row justify-content-lg-evenly align-items-center mt-4">
-                <button class="btn btn-width mt-4" id="transferir">TRANSFERIR</button>
-                <button class="btn btn-width mt-4" id="depositar">DEPOSITAR</button>
+                <button type="button" class="btn btn-width mt-4"  data-bs-toggle="modal" data-bs-target="#exampleModal">DEPOSITAR</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">REALIZAR DEPOSITO</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center">Para ingresar dinero a su cuenta, por favor digite la cantidad a depositar.</p>
+
+                                <form id="formularioDeposito" class="d-flex justify-content-center flex-column align-items-center  mt-4"> 
+                                    <input class="w-75 mb-4 p-3" type="number" id="cantidadDepositar" placeholder="Ingrese cantidad" autofocus>
+                                    <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="depositar">Confirmar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-width mt-4" data-bs-toggle="modal" data-bs-target="#exampleModalTwo">TRANSFERIR</button>
+                <div class="modal fade" id="exampleModalTwo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">REALIZAR TRANSFERENCIA</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center">Para transferir dinero, por favor digite la cantidad</p>
+
+                                <form id="formularioTransferencia" class="d-flex justify-content-center flex-column align-items-center  mt-4">
+                                    <input class="w-75 mb-4 p-3" type="number" id="cantidadTransferir" placeholder="Ingrese cantidad">
+                                    <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="transferir">Confirmar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </section>
 
         <div class="d-flex flex-column flex-lg-row gap-5">
