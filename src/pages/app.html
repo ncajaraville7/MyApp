@@ -54,7 +54,7 @@
 
                 <div class="accounts__dls d-flex align-items-center flex-column mt-4">
                     <h3>Cuenta USD</h3>
-                    <p>$0</p>
+                    <p id="cuentaDolar">$0</p>
                 </div>
             </article>
 
@@ -71,7 +71,7 @@
                                 <p class="text-center">Para ingresar dinero a su cuenta, por favor digite la cantidad a depositar.</p>
 
                                 <form id="formularioDeposito" class="d-flex justify-content-center flex-column align-items-center  mt-4"> 
-                                    <input class="w-75 mb-4 p-3" type="number" id="cantidadDepositar" placeholder="Ingrese cantidad" autofocus>
+                                    <input class="w-75 mb-4 p-3" type="number" id="cantidadDepositar" placeholder="Ingrese cantidad" autofocus="autofocus">
                                     <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="depositar">Confirmar</button>
                                 </form>
                             </div>
@@ -108,26 +108,44 @@
                 <article>
                     <div class="buy__dolar mt-5 d-flex justify-content-between align-items-center">
                         <h3>Dólar para la compra</h3>
-                        <p>$99.50</p>
+                        <p>$201.50</p>
                     </div>
     
                     <div class="buy__dolar mt-5 d-flex justify-content-between align-items-center">
                         <h3>Dólar para la venta</h3>
-                        <p>$105.50</p>
+                        <p>$198.20</p>
                     </div>
     
                     <div class="buy__dolar mt-5 d-flex justify-content-between align-items-center">
                         <h3>Euro para la compra</h3>
-                        <p>$114.81</p>
+                        <p>$234.50</p>
                     </div>
     
                     <div class="buy__dolar mt-5 d-flex justify-content-between align-items-center">
                         <h3>Euro para la venta</h3>
-                        <p>$119.81</p>
+                        <p>$219.81</p>
                     </div>
 
                     <div class="d-flex flex-column align-items-center justify-content-between flex-lg-row">
-                        <button class="btn btn-width mt-4 mx-4 text-center" id="comprarDolares">COMPRAR</button>
+                        <button type="button" class="btn btn-width mt-4 mx-4 text-center" data-bs-toggle="modal" data-bs-target="#exampleModalThree"">COMPRAR</button>
+                        <div class="modal fade" id="exampleModalThree" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">COMPRAR MONEDA EXTRANJERA</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-center">Para comprar dolares, por favor digite la cantidad que desea</p>
+                                        <form id="formularioComprar" class="d-flex justify-content-center flex-column align-items-center  mt-4">
+                                            <input class="w-75 mb-4 p-3" type="number" id="cantidadComprar" placeholder="Ingrese cantidad">
+                                            <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="comprarDolares">Confirmar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <button class="btn btn-width mt-4" id="venderDolares">VENDER</button>
                     </div>
                 </article>
