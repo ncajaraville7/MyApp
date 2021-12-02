@@ -4,11 +4,13 @@ const inputDepositar = document.getElementById('cantidadDepositar');
 const formularioDeposito = document.getElementById('formularioDeposito');
 const btnDepositar = document.getElementById('depositar');
 let deposito = 0;
+let depositoAnterior = 0;
 
 const inputTransferir = document.getElementById('cantidadTransferir');
 const formularioTransferir = document.getElementById('formularioTransferencia');
 const btnTransferir = document.getElementById('transferir');
 let transferencia = 0;
+
 
 const cuentaPesos = document.getElementById('cuentaPesos');
 
@@ -23,7 +25,7 @@ btnTransferir.addEventListener('click', realizarTransferencia);
 
 function realizarDeposito() {
   deposito = parseFloat(inputDepositar.value);
-  let valorAnterior = deposito;
+  depositoAnterior = deposito + depositoAnterior;
 
   if(!deposito) {
     Swal.fire({
@@ -41,17 +43,26 @@ function realizarDeposito() {
       showCloseButton: true,
       confirmButtonColor: '#004AAD'
     })
-    cuentaPesos.innerHTML = valorAnterior + deposito;
+    cuentaPesos.innerHTML =  `$${depositoAnterior}`;
     formularioDeposito.reset();
   }
 }
 
 function realizarTransferencia() {
   transferencia = parseFloat(inputTransferir.value);
+  depositoAnterior = depositoAnterior - transferencia;
 
   if(!transferencia) {
     Swal.fire({
       title: 'No ingresó ningún valor',
+      icon: 'error',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+  } else if(depositoAnterior < transferencia) {
+    Swal.fire({
+      title: 'No tienes esa cantidad de dinero para transferir',
       icon: 'error',
       backdrop: true,
       showCloseButton: true,
@@ -65,19 +76,7 @@ function realizarTransferencia() {
       showCloseButton: true,
       confirmButtonColor: '#004AAD'
     })
-
-    if(deposito < transferencia) {
-      Swal.fire({
-        title: 'No tienes esa cantidad de dinero para transferir',
-        icon: 'error',
-        backdrop: true,
-        showCloseButton: true,
-        confirmButtonColor: '#004AAD'
-      })
-    } else {
-      cuentaPesos.innerHTML = `$` + (`${deposito}` - `${transferencia}`);
-      deposito = deposito - transferencia
-      formularioTransferir.reset();
-    }
+    cuentaPesos.innerHTML = `$` + `${depositoAnterior}`;
+    formularioTransferir.reset();
   }
 }
