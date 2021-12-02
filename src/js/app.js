@@ -19,17 +19,22 @@ const btnComprar = document.getElementById('comprarDolares');
 const inputComprar = document.getElementById('cantidadComprar');
 const formularioComprar = document.getElementById('formularioComprar');
 const dolarCompra = 201.50;
+let compraAnterior = 0
 
 const btnVender = document.getElementById('venderDolares');
-
+const inputVender = document.getElementById('cantidadVender');
+const formularioVender = document.getElementById('formularioVender');
+const dolarVenta = 198.20;
+const ventaAnterior = 0;
 
 // EVENTOS
 
-btnDepositar.addEventListener('click', realizarDeposito);
-btnTransferir.addEventListener('click', realizarTransferencia);
+formularioDeposito.addEventListener('submit', realizarDeposito);
+formularioTransferir.addEventListener('submit', realizarTransferencia);
 
-btnComprar.addEventListener('click', comprarDolares);
-
+document.addEventListener('DOMContentLoaded', ()=> {
+  console.log(localStorage.getItem('valorCuenta'));
+})
 
 // FUNCIONES
 
@@ -55,16 +60,16 @@ function realizarDeposito(e) {
       showCloseButton: true,
       confirmButtonColor: '#004AAD'
     })
-    cuentaPesos.innerHTML =  `$${depositoAnterior}`;
+    cuentaPesos.innerHTML = `$${depositoAnterior}`;
+    
     formularioDeposito.reset();
   }
+  localStorage.setItem('valorCuenta', depositoAnterior);
 }
 
 function realizarTransferencia(e) {
   e.preventDefault();
   transferencia = parseFloat(inputTransferir.value);
-  depositoAnterior = depositoAnterior - transferencia;
-  transferenciaAnterior = transferenciaAnterior + transferencia;
 
   if(!transferencia) {
     Swal.fire({
@@ -74,7 +79,7 @@ function realizarTransferencia(e) {
       showCloseButton: true,
       confirmButtonColor: '#004AAD'
     })
-  } else if(depositoAnterior < 0) {
+  } else if(depositoAnterior < transferencia) {
     Swal.fire({
       title: 'No tienes esa cantidad de dinero para transferir',
       icon: 'error',
@@ -90,36 +95,10 @@ function realizarTransferencia(e) {
       showCloseButton: true,
       confirmButtonColor: '#004AAD'
     })
+    depositoAnterior = depositoAnterior - transferencia;
+    transferenciaAnterior = transferenciaAnterior + transferencia;
     cuentaPesos.innerHTML = `$` + `${depositoAnterior}`;
     formularioTransferir.reset();
   }
+  localStorage.setItem('valorCuenta', depositoAnterior);
 }
-
-// function comprarDolares() {
-//   let descontar = inputComprar.value * dolarCompra;
-//   depositoAnterior = depositoAnterior - descontar;
-
-//   if(!inputComprar.value) {
-//     Swal.fire({
-//       title: 'No ingresó ningún valor',
-//       icon: 'error',
-//       backdrop: true,
-//       showCloseButton: true,
-//       confirmButtonColor: '#004AAD'
-//     })
-//   } else if(depositoAnterior > dolarCompra) {
-//     console.log('compraste dolares');
-  
-//     cuentaPesos.innerHTML = `$${depositoAnterior}`
-//     cuentaDolar.innerHTML = `U$D${inputComprar.value}`
-//   } else {
-//     Swal.fire({
-//       title: 'No tienes dinero suficiente para comprar esa cantidad',
-//       icon: 'error',
-//       backdrop: true,
-//       showCloseButton: true,
-//       confirmButtonColor: '#004AAD'
-//     })
-//   }
-// } 
-

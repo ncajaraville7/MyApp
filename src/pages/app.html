@@ -54,7 +54,7 @@
 
                 <div class="accounts__dls d-flex align-items-center flex-column mt-4">
                     <h3>Cuenta USD</h3>
-                    <p id="cuentaDolar">$0</p>
+                    <p id="cuentaDolar">U$D0</p>
                 </div>
             </article>
 
@@ -72,7 +72,7 @@
 
                                 <form id="formularioDeposito" class="d-flex justify-content-center flex-column align-items-center  mt-4"> 
                                     <input class="w-75 mb-4 p-3" type="number" id="cantidadDepositar" placeholder="Ingrese cantidad" autofocus="autofocus">
-                                    <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="depositar">Confirmar</button>
+                                    <button type="submit" class="btn mx-auto" data-bs-dismiss="modal" id="depositar">Confirmar</button>
                                 </form>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
 
                                 <form id="formularioTransferencia" class="d-flex justify-content-center flex-column align-items-center  mt-4">
                                     <input class="w-75 mb-4 p-3" type="number" id="cantidadTransferir" placeholder="Ingrese cantidad">
-                                    <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="transferir">Confirmar</button>
+                                    <button type="submit" class="btn mx-auto" data-bs-dismiss="modal" id="transferir">Confirmar</button>
                                 </form>
                             </div>
                         </div>
@@ -139,14 +139,31 @@
                                         <p class="text-center">Para comprar dolares, por favor digite la cantidad que desea</p>
                                         <form id="formularioComprar" class="d-flex justify-content-center flex-column align-items-center  mt-4">
                                             <input class="w-75 mb-4 p-3" type="number" id="cantidadComprar" placeholder="Ingrese cantidad">
-                                            <button type="button" class="btn mx-auto" data-bs-dismiss="modal" id="comprarDolares">Confirmar</button>
+                                            <button type="submit" class="btn mx-auto" data-bs-dismiss="modal" id="comprarDolares">Confirmar</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn btn-width mt-4" id="venderDolares">VENDER</button>
+                        <button type="button" class="btn btn-width mt-4 mx-4 text-center" data-bs-toggle="modal" data-bs-target="#exampleModalFour">VENDER</button>
+                        <div class="modal fade" id="exampleModalFour" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">VENDER MONEDA EXTRANJERA</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-center">Para vender dolares, por favor digite la cantidad que desea</p>
+                                        <form id="formularioVender" class="d-flex justify-content-center flex-column align-items-center  mt-4">
+                                            <input class="w-75 mb-4 p-3" type="number" id="cantidadVender" placeholder="Ingrese cantidad">
+                                            <button type="submit" class="btn mx-auto" data-bs-dismiss="modal" id="venderDolares">Confirmar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </article>
             </section>
