@@ -29,12 +29,14 @@ const ventaAnterior = 0;
 
 // EVENTOS
 
-formularioDeposito.addEventListener('submit', realizarDeposito);
-formularioTransferir.addEventListener('submit', realizarTransferencia);
+// formularioDeposito.addEventListener('submit', realizarDeposito);
+$(formularioDeposito).submit(realizarDeposito);
+// formularioTransferir.addEventListener('submit', realizarTransferencia);
+$(formularioTransferir).submit(realizarTransferencia);
 
-document.addEventListener('DOMContentLoaded', ()=> {
+$( document ).ready(function() {
   console.log(localStorage.getItem('valorCuenta'));
-})
+});
 
 // FUNCIONES
 
