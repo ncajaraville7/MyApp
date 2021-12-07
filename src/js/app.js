@@ -29,9 +29,7 @@ const ventaAnterior = 0;
 
 // EVENTOS
 
-// formularioDeposito.addEventListener('submit', realizarDeposito);
 $(formularioDeposito).submit(realizarDeposito);
-// formularioTransferir.addEventListener('submit', realizarTransferencia);
 $(formularioTransferir).submit(realizarTransferencia);
 
 $( document ).ready(function() {
