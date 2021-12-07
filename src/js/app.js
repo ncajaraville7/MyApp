@@ -32,6 +32,7 @@ const ventaAnterior = 0;
 $(formularioDeposito).submit(realizarDeposito);
 $(formularioTransferir).submit(realizarTransferencia);
 $(formularioComprar).submit(comprarDolares);
+$(formularioVender).submit(venderDolares);
 
 $( document ).ready(function() {
   console.log(localStorage.getItem('valorCuenta'));
@@ -140,4 +141,41 @@ function comprarDolares(e) {
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
   }
   formularioComprar.reset();
+}
+
+function venderDolares(e) {
+  e.preventDefault();
+
+  let venta = dolarVenta * inputVender.value;
+
+  if(!inputVender.value) {
+    Swal.fire({
+      title: 'No ingresó ningún valor',
+      icon: 'error',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+  } else if (compraAnterior < inputVender.value) {
+    Swal.fire({
+      title: 'No tienes suficiente dinero',
+      icon: 'error',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+  } else {
+    Swal.fire({
+      title: 'La compra se realizó correctamente',
+      icon: 'success',
+      backdrop: true,
+      showCloseButton: true,
+      confirmButtonColor: '#004AAD'
+    })
+    depositoAnterior = depositoAnterior + venta;
+    cuentaPesos.innerHTML = `$${depositoAnterior}`;
+    compraAnterior = compraAnterior - parseFloat(inputVender.value);
+    cuentaDolar.innerHTML = `U$D${compraAnterior}`;
+  }
+  formularioVender.reset();
 }
