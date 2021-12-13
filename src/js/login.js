@@ -40,8 +40,8 @@ btnSignup.addEventListener('click', ()=> boxFormulario.classList.add('active'));
 
 btnSignin.addEventListener('click', ()=> boxFormulario.classList.remove('active'));
 
-inputUsuario.addEventListener('blur', validarRegistro);
-inputContraseña.addEventListener('blur', validarRegistro);
+inputUsuario.addEventListener('blur', validar);
+inputContraseña.addEventListener('blur', validar);
 
 inputIniciarSesion.addEventListener('click', e => {
     e.preventDefault();
@@ -56,9 +56,9 @@ inputIniciarSesion.addEventListener('click', e => {
 
 irRegistrarse.addEventListener('click', () => alertas.innerHTML = '');
 
-regUsuario.addEventListener('blur', validarRegistro);
-regContraseña.addEventListener('blur', validarRegistro);
-confContraseña.addEventListener('blur', validarRegistro);
+regUsuario.addEventListener('blur', validar);
+regContraseña.addEventListener('blur', validar);
+confContraseña.addEventListener('blur', validar);
 
 irIniciarSesion.addEventListener('click', () => alertas.innerHTML = '');
 
@@ -81,7 +81,7 @@ registrarse.addEventListener('click', e => {
 
 // FUNCIONES
 
-function validarRegistro(e) {
+function validar(e) {
     if(!e.target.value) {
         e.target.classList.add('validacionEr');
         e.target.classList.remove('validacionOk');

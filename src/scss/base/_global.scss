@@ -116,3 +116,29 @@ img {
         width: 100%;
     }
 }
+
+.alertas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.err {
+    background-color: rgb(255, 0, 0);
+    color: $white;
+    width: 85%;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    padding: 2rem;
+    font-size: 1.5rem;
+}
+
+.confirm {
+    background-color: rgb(1, 192, 1);
+    color: $white;
+    width: 85%;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    padding: 2rem;
+    font-size: 1.3rem;
+}

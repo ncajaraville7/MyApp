@@ -27,12 +27,15 @@ const formularioVender = document.getElementById('formularioVender');
 const dolarVenta = 198.20;
 const ventaAnterior = 0;
 
+const formularioPrestamos = document.querySelector('.loan-app__form');
 // EVENTOS
 
 $(formularioDeposito).submit(realizarDeposito);
 $(formularioTransferir).submit(realizarTransferencia);
 $(formularioComprar).submit(comprarDolares);
 $(formularioVender).submit(venderDolares);
+$(formularioPrestamos).submit(pedirPrestamo);
+
 
 $( document ).ready(function() {
   console.log(localStorage.getItem('valorCuenta'));
@@ -178,4 +181,41 @@ function venderDolares(e) {
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
   }
   formularioVender.reset();
+}
+
+function pedirPrestamo(e) {
+  e.preventDefault();
+
+  const prestamoNombre = document.getElementById('prestamoNombre').value;
+  const prestamoTelefono = document.getElementById('prestamoTelefono').value;
+  const prestamoEmail = document.getElementById('prestamoEmail').value;
+  const prestamoImporte = document.getElementById('prestamoMonto').value;
+
+  if(!prestamoNombre || !prestamoTelefono || !prestamoEmail || !prestamoImporte) {
+    mostrarAlerta('Debes completar todos los campos', 'error');
+  } else {
+    mostrarAlerta('Prestamo confirmado, verifique su cuenta')
+    depositoAnterior = depositoAnterior + parseInt(prestamoImporte);
+    cuentaPesos.innerHTML = `$${depositoAnterior}`;
+  }
+  formularioPrestamos.reset();
+}
+
+function mostrarAlerta(mensaje, tipo) {
+  const alertas = document.querySelector('.alertas');
+
+  const div = document.createElement('div');
+  
+
+  if(tipo === 'error') {
+    div.classList.add('err');
+  } else {
+    div.classList.add('confirm');
+  }
+
+  alertas.innerHTML = ''
+  div.textContent = mensaje
+  alertas.appendChild(div);
+
+  setTimeout( ()=> div.remove(), 3000);
 }
