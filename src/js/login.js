@@ -1,5 +1,3 @@
-// VARIABLES
-
 const btnSignup = document.querySelector('.signup-btn');
 const btnSignin = document.querySelector('.signin-btn');
 const boxFormulario = document.querySelector('.formBx');
@@ -22,8 +20,6 @@ const registrarse = document.querySelector('.registrarse');
 
 const formulario = document.querySelector('.formulario')
 
-//---------------------------
-
 const dataUsuarios = [];
 
 class Usuario {
@@ -33,12 +29,11 @@ class Usuario {
     }
 }
 
-
-// EVENTOS
+document.addEventListener('DOMContenLoaded', ()=> {
+    dataUsuarios = JSON.parse(localStorage.getItem('usuario')) || [];
+});
 
 btnSignup.addEventListener('click', ()=> boxFormulario.classList.add('active'));
-
-
 btnSignin.addEventListener('click', ()=> boxFormulario.classList.remove('active'));
 
 inputUsuario.addEventListener('blur', validar);
@@ -77,12 +72,10 @@ registrarse.addEventListener('click', e => {
             contraseña: regContraseña.value
         }));
 
+        localStorage.setItem('usuario', JSON.stringify(dataUsuarios));
         formulario.reset()
     }
 });
-
-
-// FUNCIONES
 
 function validar(e) {
     if(!e.target.value) {

@@ -34,10 +34,10 @@ $(formularioVender).submit(venderDolares);
 $(formularioPrestamos).submit(pedirPrestamo);
 
 $( document ).ready(function() {
-  depositoAnterior = JSON.parse(localStorage.getItem('valorCuenta'));
+  depositoAnterior = JSON.parse(localStorage.getItem('valorCuenta')) || 0;
   cuentaPesos.innerHTML = `$${depositoAnterior}`;
 
-  compraAnterior = JSON.parse(localStorage.getItem('cuentaDolares'));
+  compraAnterior = JSON.parse(localStorage.getItem('cuentaDolares')) || 0;
   cuentaDolar.innerHTML = `U$D${compraAnterior}`;
 
 });
@@ -136,7 +136,7 @@ function comprarDolares(e) {
       confirmButtonColor: '#004AAD'
     })
 
-    depositoAnterior = depositoAnterior - compra;
+    depositoAnterior = (depositoAnterior - compra).toFixed(1);
     compraAnterior = compraAnterior + parseFloat(inputComprar.value);
     cuentaPesos.innerHTML = `$${depositoAnterior}`;
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
