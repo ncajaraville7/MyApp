@@ -1,5 +1,3 @@
-// VARIABLES
-
 const inputDepositar = document.getElementById('cantidadDepositar');
 const formularioDeposito = document.getElementById('formularioDeposito');
 const btnDepositar = document.getElementById('depositar');
@@ -28,7 +26,6 @@ const dolarVenta = 198.20;
 const ventaAnterior = 0;
 
 const formularioPrestamos = document.querySelector('.loan-app__form');
-// EVENTOS
 
 $(formularioDeposito).submit(realizarDeposito);
 $(formularioTransferir).submit(realizarTransferencia);
@@ -36,13 +33,14 @@ $(formularioComprar).submit(comprarDolares);
 $(formularioVender).submit(venderDolares);
 $(formularioPrestamos).submit(pedirPrestamo);
 
-
 $( document ).ready(function() {
-  console.log(localStorage.getItem('valorCuenta'));
+  depositoAnterior = JSON.parse(localStorage.getItem('valorCuenta'));
+  cuentaPesos.innerHTML = `$${depositoAnterior}`;
+
+  compraAnterior = JSON.parse(localStorage.getItem('cuentaDolares'));
+  cuentaDolar.innerHTML = `U$D${compraAnterior}`;
+
 });
-
-// FUNCIONES
-
 
 function realizarDeposito(e) {
   e.preventDefault();
@@ -144,6 +142,8 @@ function comprarDolares(e) {
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
   }
   formularioComprar.reset();
+  localStorage.setItem('valorCuenta', depositoAnterior);
+  localStorage.setItem('cuentaDolares', compraAnterior);
 }
 
 function venderDolares(e) {
@@ -181,6 +181,8 @@ function venderDolares(e) {
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
   }
   formularioVender.reset();
+  localStorage.setItem('valorCuenta', depositoAnterior);
+  localStorage.setItem('cuentaDolares', compraAnterior);
 }
 
 function pedirPrestamo(e) {
@@ -199,6 +201,7 @@ function pedirPrestamo(e) {
     cuentaPesos.innerHTML = `$${depositoAnterior}`;
   }
   formularioPrestamos.reset();
+  localStorage.setItem('valorCuenta', depositoAnterior);
 }
 
 function mostrarAlerta(mensaje, tipo) {

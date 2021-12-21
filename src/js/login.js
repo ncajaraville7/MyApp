@@ -38,6 +38,7 @@ class Usuario {
 
 btnSignup.addEventListener('click', ()=> boxFormulario.classList.add('active'));
 
+
 btnSignin.addEventListener('click', ()=> boxFormulario.classList.remove('active'));
 
 inputUsuario.addEventListener('blur', validar);
@@ -66,6 +67,8 @@ registrarse.addEventListener('click', e => {
     e.preventDefault();
     if(regContraseña.value != confContraseña.value) {
         mostrarError('Las contraseñas no coinciden');
+    } else if(!regUsuario.value || !regContraseña.value || !confContraseña.value) {
+        mostrarError('Debes completar todos los campos')
     } else {
         mostrarConfirmacion('Usuario creado con exito');
     
