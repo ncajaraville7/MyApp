@@ -20,7 +20,8 @@ const registrarse = document.querySelector('.registrarse');
 
 const formulario = document.querySelector('.formulario')
 
-const dataUsuarios = [];
+let dataUsuarios = [];
+let dataUsuariosJson = [];
 
 class Usuario {
     constructor(data) {
@@ -29,8 +30,17 @@ class Usuario {
     }
 }
 
-document.addEventListener('DOMContenLoaded', ()=> {
+document.addEventListener('DOMContentLoaded', ()=> {
+    const URL = "http://127.0.0.1:5500/src/js/usuarios.json"
+    $.get(URL, function(respuesta, estado){
+        if (estado === "success") {
+            localStorage.setItem('usuariojson', JSON.stringify(respuesta));
+        }
+    })
+
     dataUsuarios = JSON.parse(localStorage.getItem('usuario')) || [];
+    dataUsuariosJson = JSON.parse(localStorage.getItem('usuariojson')) || [];
+    console.log(dataUsuarios);
 });
 
 btnSignup.addEventListener('click', ()=> boxFormulario.classList.add('active'));
@@ -45,8 +55,14 @@ inputIniciarSesion.addEventListener('click', e => {
     if(!inputUsuario.value || !inputContraseña.value) {
         mostrarError('Usuario o contraseña invalidos');
     } else {
+        const usuarioEncontrado = dataUsuarios.find( usuario => usuario.usuario === inputUsuario.value && usuario.contraseña === inputContraseña.value);
+        const usuarioEncontradoJson = dataUsuariosJson.find( usuario => usuario.usuario === inputUsuario.value && usuario.contraseña === inputContraseña.value);
 
-        window.location.href = "https://ncajaraville7.github.io/MyApp/src/pages/app.html"
+        if (usuarioEncontrado || usuarioEncontradoJson) {
+            window.location.href = "https://ncajaraville7.github.io/MyApp/src/pages/app.html"
+        }else{
+            mostrarError('El usuario no existe');
+        }  
     }
 })
 
@@ -66,7 +82,7 @@ registrarse.addEventListener('click', e => {
         mostrarError('Debes completar todos los campos')
     } else {
         mostrarConfirmacion('Usuario creado con exito');
-    
+        console.log(dataUsuarios);
         dataUsuarios.push(new Usuario ({
             usuario: regUsuario.value,
             contraseña: regContraseña.value
