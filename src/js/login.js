@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     dataUsuarios = JSON.parse(localStorage.getItem('usuario')) || [];
     dataUsuariosJson = JSON.parse(localStorage.getItem('usuariojson')) || [];
-    console.log(dataUsuarios);
 });
 
 btnSignup.addEventListener('click', ()=> boxFormulario.classList.add('active'));
@@ -82,7 +81,6 @@ registrarse.addEventListener('click', e => {
         mostrarError('Debes completar todos los campos')
     } else {
         mostrarConfirmacion('Usuario creado con exito');
-        console.log(dataUsuarios);
         dataUsuarios.push(new Usuario ({
             usuario: regUsuario.value,
             contraseña: regContraseña.value
