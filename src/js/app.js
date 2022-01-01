@@ -26,6 +26,7 @@ const dolarVenta = 198.20;
 const ventaAnterior = 0;
 
 const formularioPrestamos = document.querySelector('.loan-app__form');
+let contador = 0;
 
 $(formularioDeposito).submit(realizarDeposito);
 $(formularioTransferir).submit(realizarTransferencia);
@@ -195,11 +196,15 @@ function pedirPrestamo(e) {
 
   if(!prestamoNombre || !prestamoTelefono || !prestamoEmail || !prestamoImporte) {
     mostrarAlerta('Debes completar todos los campos', 'error');
-  } else {
+  } else if (contador === 0) {
     mostrarAlerta('Prestamo confirmado, verifique su cuenta')
     depositoAnterior = depositoAnterior + parseInt(prestamoImporte);
     cuentaPesos.innerHTML = `$${depositoAnterior}`;
+    contador = 1;
+  } else {
+    mostrarAlerta('Ya has pedido un prestamo anteriormente', 'error');
   }
+
   formularioPrestamos.reset();
   localStorage.setItem('valorCuenta', depositoAnterior);
 }
@@ -216,8 +221,8 @@ function mostrarAlerta(mensaje, tipo) {
     div.classList.add('confirm');
   }
 
-  alertas.innerHTML = ''
-  div.textContent = mensaje
+  alertas.innerHTML = '';
+  div.textContent = mensaje;
   alertas.appendChild(div);
 
   setTimeout( ()=> div.remove(), 3000);
