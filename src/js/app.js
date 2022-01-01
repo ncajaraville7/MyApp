@@ -137,7 +137,7 @@ function comprarDolares(e) {
       confirmButtonColor: '#004AAD'
     })
 
-    depositoAnterior = (depositoAnterior - compra).toFixed(1);
+    depositoAnterior = depositoAnterior - compra;
     compraAnterior = compraAnterior + parseFloat(inputComprar.value);
     cuentaPesos.innerHTML = `$${depositoAnterior}`;
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
