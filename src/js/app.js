@@ -178,7 +178,7 @@ function venderDolares(e) {
     })
     depositoAnterior = depositoAnterior + venta;
     cuentaPesos.innerHTML = `$${depositoAnterior}`;
-    compraAnterior = compraAnterior - parseFloat(inputVender.value);
+    compraAnterior = compraAnterior - inputVender.value;
     cuentaDolar.innerHTML = `U$D${compraAnterior}`;
   }
   formularioVender.reset();
